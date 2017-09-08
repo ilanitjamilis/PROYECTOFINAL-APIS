@@ -34,7 +34,7 @@ try {
 	echo "funciono";
 	
 } catch (PDOException $e) {
-	echo "error".$e->getMessage()."Datos: ".$misDatos;
+	echo "error".$e->getMessage()."  OBJ: ".$obj;
 }
 
 $DBH = null;
