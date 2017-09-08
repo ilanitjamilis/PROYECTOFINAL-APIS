@@ -8,14 +8,11 @@ $dbname = "db";
 $misDatos = file_get_contents('php://input');
 $miDenuncia = json_decode($misDatos,true);
 
-echo $miDenuncia;
 $latitud = $miDenuncia["latitud"];
 $longitud = $miDenuncia["longitud"];
 $tipo = $miDenuncia["tipo"];
 $descripcion = $miDenuncia["descripcion"];
-echo $descripcion;
-exit("sss");
-/*
+
 
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -37,9 +34,9 @@ try {
 	echo "funciono";
 	
 } catch (PDOException $e) {
-	echo "error".$e->getMessage();
+	echo "error";
 }
 
 $DBH = null;
-*/
+
 ?>
