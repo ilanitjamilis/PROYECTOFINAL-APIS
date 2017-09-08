@@ -10,8 +10,8 @@ $misDatos = file_get_contents('php://input');
 
 try(){
 	echo "antes de decode";
-	$miDenuncia = json_decode($misDatos);
-	echo "adcsv ".$miDenuncia;
+	//$miDenuncia = json_decode($misDatos);
+	echo "adcsv ".$misDatos;
 	exit("asad");
 }
 catch(Exception $e){
