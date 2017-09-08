@@ -6,15 +6,15 @@ $dbname = "db";
 
 //$misDatos = $_POST["body"];
 $misDatos = file_get_contents('php://input');
-//$miDenuncia = json_decode($misDatos);
-
-echo $misDatos;
-exit("asad");
+$miDenuncia = json_decode($misDatos);
 
 $latitud = $miDenuncia["latitud"];
 $longitud = $miDenuncia["longitud"];
 $tipo = $miDenuncia["tipo"];
 $descripcion = $miDenuncia["descripcion"];
+
+echo $tipo;
+exit("asad");
 
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
