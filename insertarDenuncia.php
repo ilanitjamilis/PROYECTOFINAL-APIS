@@ -6,19 +6,12 @@ $dbname = "db";
 
 //$misDatos = $_POST["body"];
 $misDatos = file_get_contents('php://input');
+$miDenuncia = json_decode($misDatos);
 
+echo "adcsv ".$miDenuncia;
+exit("asad");
 
-try{
-	echo "antes de decode";
-	$miDenuncia = json_decode($misDatos);
-	echo "adcsv ".$miDenuncia;
-	exit("asad");
-}
-catch(Exception $e){
-	echo "error 1:   ".$e->getMessage();
-}
-
-$latitud = $miDenuncia["latitud"];
+/*$latitud = $miDenuncia["latitud"];
 $longitud = $miDenuncia["longitud"];
 $tipo = $miDenuncia["tipo"];
 $descripcion = $miDenuncia["descripcion"];
@@ -48,5 +41,5 @@ try {
 }
 
 $DBH = null;
-
+*/
 ?>
