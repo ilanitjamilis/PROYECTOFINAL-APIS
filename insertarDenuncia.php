@@ -7,7 +7,7 @@ $dbname = "db";
 $misDatos = $_POST["body"];
 $miDenuncia = json_decode($misDatos);
 $latitud = $miDenuncia["latitud"];
-$longitud = $miDenuncia["longitud"]
+$longitud = $miDenuncia["longitud"];
 $tipo = $miDenuncia["tipo"];
 $descripcion = $miDenuncia["descripcion"];
 
@@ -15,15 +15,15 @@ try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	// set the PDO error mode to exception
 	$DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$query="INSERT INTO denuncias SET latitud = :lat, longitud=:long, Tipo=:tip, Descripcion=:descr";
+	$query="INSERT INTO denuncias SET latitud = :lat, longitud=:lon, tipo=:tip, descripcion=:des";
 	$STH = $DBH->prepare($query);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 
 	$params = array(
 	":lat" => $latitud,
-	":long" =>  $longitud,
+	":lon" =>  $longitud,
 	":tip" => $tipo,
-	":descr" => $descripcion
+	":des" => $descripcion
 	);
 	
 	$STH->execute($params);
