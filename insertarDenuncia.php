@@ -9,13 +9,13 @@ $misDatos = file_get_contents('php://input');
 $miDenuncia = json_decode($misDatos,true);
 
 echo $miDenuncia;
-exit("asad");
-
-/*$latitud = $miDenuncia["latitud"];
+$latitud = $miDenuncia["latitud"];
 $longitud = $miDenuncia["longitud"];
 $tipo = $miDenuncia["tipo"];
 $descripcion = $miDenuncia["descripcion"];
-
+echo $descripcion;
+exit("sss");
+/*
 
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
