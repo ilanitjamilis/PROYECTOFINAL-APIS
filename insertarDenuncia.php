@@ -31,7 +31,7 @@ try {
 	echo "funciono";
 	
 } catch (PDOException $e) {
-	echo "error";
+	echo "error".$e->getMessage();
 }
 
 $DBH = null;
