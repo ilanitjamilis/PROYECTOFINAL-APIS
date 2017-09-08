@@ -19,6 +19,6 @@ try {
 	echo "error" - $e->getMessage();
 }
 
-$conn = null;
+$DBH = null;
 
 ?>
