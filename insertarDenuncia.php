@@ -31,7 +31,7 @@ try {
 	echo "funciono";
 	
 } catch (PDOException $e) {
-	echo "error".$e->getMessage()."Lat: ".$latitud."Long".$longitud."Tipo".$tipo."Descr".$descripcion;
+	echo "error".$e->getMessage()."Datos: ".$misDatos;
 }
 
 $DBH = null;
