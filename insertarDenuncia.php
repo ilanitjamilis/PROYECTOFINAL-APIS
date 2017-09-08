@@ -6,10 +6,16 @@ $dbname = "db";
 
 //$misDatos = $_POST["body"];
 $misDatos = file_get_contents('php://input');
-$miDenuncia = json_decode($misDatos);
 
-echo "adcsv ".$miDenuncia;
-exit("asad");
+
+try(){
+	$miDenuncia = json_decode($misDatos);
+	echo "adcsv ".$miDenuncia;
+	exit("asad");
+}
+catch(Exception $e){
+	echo "error 1:   ".$e->getMessage();
+}
 
 $latitud = $miDenuncia["latitud"];
 $longitud = $miDenuncia["longitud"];
