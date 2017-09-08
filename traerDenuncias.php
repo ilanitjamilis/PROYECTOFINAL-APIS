@@ -2,13 +2,13 @@
 $servername = "127.0.0.1:51527";
 $username = "azure";
 $password = "6#vWHD_$";
-$dbname = "localdb";
+$dbname = "db";
 
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	// set the PDO error mode to exception
 	$DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$query = "SELECT latitud, longitud, Tipo, Descripcion FROM denuncias";
+	$query = "SELECT latitud, longitud, tipo, descripcion FROM denuncias";
 	$STH = $DBH->prepare($query);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 	$STH->execute();
