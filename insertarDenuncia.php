@@ -6,9 +6,9 @@ $dbname = "db";
 
 //$misDatos = $_POST["body"];
 $misDatos = file_get_contents('php://input');
-$miDenuncia = json_decode($misDatos);
+$miDenuncia = json_decode($misDatos,true);
 
-echo "adcsv ".$miDenuncia;
+echo $miDenuncia;
 exit("asad");
 
 /*$latitud = $miDenuncia["latitud"];
