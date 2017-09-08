@@ -16,7 +16,7 @@ try {
 	$resultados = $STH->fetchAll();
 	echo json_encode($resultados);
 } catch (PDOException $e) {
-	echo "error" - $e->getMessage();
+	echo "error";
 }
 
 $DBH = null;
