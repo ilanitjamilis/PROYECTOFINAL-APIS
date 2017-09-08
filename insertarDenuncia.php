@@ -2,14 +2,14 @@
 $servername = "127.0.0.1:51527";
 $username = "azure";
 $password = "6#vWHD_$";
-$dbname = "localdb";
+$dbname = "db";
 
 $misDatos = $_POST["body"];
 $miDenuncia = json_decode($misDatos);
-$latitud = miDenuncia["latitud"];
-$longitud = miDenuncia["longitud"]
-$tipo = miDenuncia["tipo"];
-$descripcion = miDenuncia["descripcion"];
+$latitud = $miDenuncia["latitud"];
+$longitud = $miDenuncia["longitud"]
+$tipo = $miDenuncia["tipo"];
+$descripcion = $miDenuncia["descripcion"];
 
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -20,10 +20,10 @@ try {
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 
 	$params = array(
-	":lat" => miDenuncia["latitud"],
-	":long" =>  miDenuncia["longitud"],
-	":tip" => miDenuncia["tipo"];,
-	":descr" => miDenuncia["descripcion"],
+	":lat" => $latitud,
+	":long" =>  $longitud,
+	":tip" => $tipo,
+	":descr" => $descripcion
 	);
 	
 	$STH->execute($params);
@@ -31,7 +31,7 @@ try {
 	echo "funciono";
 	
 } catch (PDOException $e) {
-	echo "error";
+	echo "error" . $e->getMessage( );
 }
 
 $DBH = null;
