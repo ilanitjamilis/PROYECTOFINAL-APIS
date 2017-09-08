@@ -4,11 +4,12 @@ $username = "azure";
 $password = "6#vWHD_$";
 $dbname = "db";
 
-$json = file_get_contents('php://input');
-$obj = json_decode($json);
-
 $misDatos = $_POST["body"];
 $miDenuncia = json_decode($misDatos);
+
+echo $miDenuncia;
+exit("asad");
+
 $latitud = $miDenuncia["latitud"];
 $longitud = $miDenuncia["longitud"];
 $tipo = $miDenuncia["tipo"];
@@ -34,7 +35,7 @@ try {
 	echo "funciono";
 	
 } catch (PDOException $e) {
-	echo "error".$e->getMessage()."  OBJ: ".$obj;
+	echo "error".$e->getMessage();
 }
 
 $DBH = null;
