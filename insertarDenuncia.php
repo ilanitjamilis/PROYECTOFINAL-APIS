@@ -4,10 +4,11 @@ $username = "azure";
 $password = "6#vWHD_$";
 $dbname = "db";
 
-$misDatos = $_POST["body"];
-$miDenuncia = json_decode($misDatos);
+//$misDatos = $_POST["body"];
+$misDatos = file_get_contents('php://input');
+//$miDenuncia = json_decode($misDatos);
 
-echo $miDenuncia;
+echo $misDatos;
 exit("asad");
 
 $latitud = $miDenuncia["latitud"];
