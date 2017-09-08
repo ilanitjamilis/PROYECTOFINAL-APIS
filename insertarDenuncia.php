@@ -34,6 +34,6 @@ try {
 	echo "error";
 }
 
-$conn = null;
+$DBH = null;
 
 ?>
