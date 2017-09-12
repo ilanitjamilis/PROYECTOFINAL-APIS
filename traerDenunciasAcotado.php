@@ -15,8 +15,7 @@ $maxLongP = $misParametros["maxLong"];
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	$DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$query = "SELECT latitud, longitud, tipo, descripcion FROM denuncias WHERE latitud Between :minLat And :maxLat
-          And longitud Between :minLon And :maxLon";
+	$query = "SELECT latitud, longitud, tipo, descripcion FROM denuncias WHERE latitud Between :minLat And :maxLat And longitud Between :minLon And :maxLon";
 	$STH = $DBH->prepare($query);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 	
