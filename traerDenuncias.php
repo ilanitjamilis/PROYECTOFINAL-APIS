@@ -6,7 +6,6 @@ $dbname = "db";
 
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-	// set the PDO error mode to exception
 	$DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$query = "SELECT latitud, longitud, tipo, descripcion FROM denuncias";
 	$STH = $DBH->prepare($query);
@@ -15,6 +14,7 @@ try {
 	
 	$resultados = $STH->fetchAll();
 	echo json_encode($resultados);
+	
 } catch (PDOException $e) {
 	echo "error";
 }

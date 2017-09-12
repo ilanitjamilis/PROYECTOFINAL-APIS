@@ -4,7 +4,6 @@ $username = "azure";
 $password = "6#vWHD_$";
 $dbname = "db";
 
-//$misDatos = $_POST["body"];
 $misDatos = file_get_contents('php://input');
 $miDenuncia = json_decode($misDatos,true);
 
@@ -16,7 +15,6 @@ $descripcion = $miDenuncia["descripcion"];
 
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-	// set the PDO error mode to exception
 	$DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$query="INSERT INTO denuncias SET latitud = :lat, longitud=:lon, tipo=:tip, descripcion=:des";
 	$STH = $DBH->prepare($query);
