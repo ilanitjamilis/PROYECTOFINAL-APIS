@@ -17,7 +17,7 @@ $fecha = $miDenuncia["fecha"];
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	$DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$query = "INSERT INTO misdenuncias SET latitud = :lat, longitud=:lon, tipo=:tip, descripcion=:des fecha=:fec";
+	$query = "INSERT INTO misdenuncias SET latitud = :lat, longitud=:lon, tipo=:tip, descripcion=:des, fecha=:fec";
 	$STH = $DBH->prepare($query);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 
