@@ -13,9 +13,22 @@ $lngRecibida = $misParametros["miLng"];
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	$DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$query = "SELECT latitud, longitud, tipo, descripcion, fecha FROM misdenuncias WHERE ACOS( SIN( RADIANS( latitud ) ) * 
-	SIN( RADIANS( :lat ) ) + COS( RADIANS( latitud ) )* COS( RADIANS( :lat )) * COS( RADIANS( longitud ) - 
-	RADIANS( :lng )) ) * 6380 < 1";
+	$query = "SELECT latitud, longitud, tipo, descripcion, fecha, 
+	(
+        6371 *
+        acos(
+            cos( radians( :lat ) ) *
+            cos( radians( `latitud` ) ) *
+            cos(
+                radians( `longitud` ) - radians( :lng )
+            ) +
+            sin(radians(:lat)) *
+            sin(radians(`latitud`))
+        )
+    ) `distance`
+	FROM misdenuncias 
+	HAVING
+    `distance` < 25 ";
 	
 	$STH = $DBH->prepare($query);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
