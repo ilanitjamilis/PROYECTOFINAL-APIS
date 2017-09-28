@@ -28,10 +28,12 @@ try {
     ) AS distancia
 	FROM misdenuncias 
 	HAVING
-    distancia < 25 ";
+    distancia > 0 ";
 	
 	$STH = $DBH->prepare($query);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
+	
+	//git add --all && git commit -m "subo"
 	
 	$params = array(
 	":lat" => $latRecibida,
