@@ -36,7 +36,7 @@ try {
 	
 	$params = array(
 	":lat" => $latRecibida,
-	":lng" =>  $lngRecibida,
+	":lng" =>  $lngRecibida
 	);
 	
 	$STH->execute(params);
