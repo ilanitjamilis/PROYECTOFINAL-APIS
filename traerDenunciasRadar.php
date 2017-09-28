@@ -54,17 +54,17 @@ try {
 	$query = "SELECT latitud, longitud, tipo, descripcion, fecha, 
 	(6371 * ACOS( 
                                             SIN(RADIANS(latitud)) 
-                                            * SIN(RADIANS(:latRecibidaq)) 
-                                            + COS(RADIANS(longitud - :lngRecibidaq)) 
+                                            * SIN(RADIANS(' . $latRecibida . ')) 
+                                            + COS(RADIANS(longitud - ' . $lngRecibida . ')) 
                                             * COS(RADIANS(latitud)) 
-                                            * COS(RADIANS(:latRecibidaq))
+                                            * COS(RADIANS(' . $latRecibida . '))
                                             )
                                ) AS distance
 							   
         FROM misdenuncias 
 		WHERE (latitud BETWEEN ' . $box['min_lat']. ' AND ' . $box['max_lat'] . ')
                      AND (longitud BETWEEN ' . $box['min_lng']. ' AND ' . $box['max_lng']. ')
-                     HAVING distance  < :distanceq";
+                     HAVING distance  < ' . $distance . ' ";
 
 	/*$query = "SELECT latitud, longitud, tipo, descripcion, fecha
         FROM misdenuncias 
@@ -105,16 +105,10 @@ try {
 	":maxLon" =>  $maxLon
 	);*/
 	
-	$params = array(
-	":distanceq" => $distance,
-	":latRecibidaq" =>  $latRecibida, 
-	":lngRecibidaq" => $lngRecibida
-	);
-	
 	
 	//$STH->execute(params);
 	
-	$STH->execute(params);
+	$STH->execute();
 	
 	$resultados = $STH->fetchAll();
 	echo json_encode($resultados);
