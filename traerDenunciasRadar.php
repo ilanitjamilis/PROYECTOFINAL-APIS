@@ -22,12 +22,12 @@ try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	$DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	$sql = "SELECT latitud, longitud, tipo, descripcion, fecha
+	$query = "SELECT latitud, longitud, tipo, descripcion, fecha
         FROM misdenuncias 
         WHERE latitud Between :minLat And :maxLat
           And longitud Between :minLon And :maxLon";
 	
-	$query = "SELECT latitud, longitud, tipo, descripcion, fecha, 
+	/*$query = "SELECT latitud, longitud, tipo, descripcion, fecha, 
 	(
         6371 *
         acos(
@@ -42,12 +42,17 @@ try {
     ) AS distancia
 	FROM misdenuncias 
 	HAVING
-    distancia < 25 ";
+    distancia < 25 ";*/
 	
-	$STH = $DBH->prepare($sql);
+	$STH = $DBH->prepare($query);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 	
 	//git add --all && git commit -m "subo"
+	
+	/*$params = array(
+	":lat" => $latRecibida,
+	":lng" =>  $lngRecibida
+	);*/
 	
 	$params = array(
 	":minLat" => $minLat,
