@@ -25,7 +25,8 @@ try {
             sin(radians(:lat)) *
             sin(radians(`latitud`))
         )
-    ) `distance`
+    ) AS distance
+
 	FROM misdenuncias 
 	HAVING
     `distance` < 25 ";
