@@ -10,6 +10,9 @@ $misParametros = json_decode($misDatos,true);
 $latRecibida = $misParametros["miLat"];
 $lngRecibida = $misParametros["miLng"];
 
+$R = 6371;
+$rad = 2;
+
 $maxLat = $latRecibida + rad2deg($rad/$R);
 $minLat = $latRecibida - rad2deg($rad/$R);
 $maxLon = $lngRecibida + rad2deg(asin($rad/$R) / cos(deg2rad($latRecibida)));
