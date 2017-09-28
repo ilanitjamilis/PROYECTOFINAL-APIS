@@ -10,9 +10,20 @@ $misParametros = json_decode($misDatos,true);
 $latRecibida = $misParametros["miLat"];
 $lngRecibida = $misParametros["miLng"];
 
+$maxLat = $latRecibida + rad2deg($rad/$R);
+$minLat = $latRecibida - rad2deg($rad/$R);
+$maxLon = $lngRecibida + rad2deg(asin($rad/$R) / cos(deg2rad($latRecibida)));
+$minLon = $lngRecibida - rad2deg(asin($rad/$R) / cos(deg2rad($latRecibida)));
+
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	$DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	$sql = "SELECT latitud, longitud, tipo, descripcion, fecha
+        FROM misdenuncias 
+        WHERE latitud Between :minLat And :maxLat
+          And longitud Between :minLon And :maxLon";
+	
 	$query = "SELECT latitud, longitud, tipo, descripcion, fecha, 
 	(
         6371 *
@@ -28,9 +39,9 @@ try {
     ) AS distancia
 	FROM misdenuncias 
 	HAVING
-    distancia > 0 ";
+    distancia < 25 ";
 	
-	$STH = $DBH->prepare($query);
+	$STH = $DBH->prepare($sql);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 	
 	//git add --all && git commit -m "subo"
