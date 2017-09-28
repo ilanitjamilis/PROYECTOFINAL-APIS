@@ -50,8 +50,10 @@ try {
 	//git add --all && git commit -m "subo"
 	
 	$params = array(
-	":lat" => $latRecibida,
-	":lng" =>  $lngRecibida
+	":minLat" => $minLat,
+	":maxLat" =>  $maxLat, 
+	":minLon" => $minLon,
+	":maxLon" =>  $maxLon
 	);
 	
 	$STH->execute(params);
