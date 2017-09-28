@@ -25,11 +25,10 @@ try {
             sin(radians(:lat)) *
             sin(radians(`latitud`))
         )
-    ) AS distance
-
+    ) AS distancia
 	FROM misdenuncias 
 	HAVING
-    `distance` < 25 ";
+    distancia < 25 ";
 	
 	$STH = $DBH->prepare($query);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
