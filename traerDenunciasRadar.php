@@ -105,14 +105,9 @@ try {
 	":maxLon" =>  $maxLon
 	);*/
 	
-	$params = array(
-	":minLat" => $minLat,
-	":maxLat" =>  $maxLat, 
-	":minLon" => $minLon,
-	":maxLon" =>  $maxLon
-	);
 	
-	$STH->execute(params);
+	//$STH->execute(params);
+	$STH->execute();
 	
 	$resultados = $STH->fetchAll();
 	echo json_encode($resultados);
