@@ -41,8 +41,8 @@ $distance = 1; // Sitios que se encuentren en un radio de 1KM
 $box = getBoundaries($latRecibida, $lngRecibida, 1, 6371);
 
 echo $box['min_lat'];
-$box['max_lat'];
-$box['min_lng'];
-$box['max_lng'];
+echo $box['max_lat'];
+echo $box['min_lng'];
+echo $box['max_lng'];
 
 ?>
