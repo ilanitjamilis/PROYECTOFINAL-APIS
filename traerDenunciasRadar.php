@@ -37,8 +37,7 @@ function getBoundaries($lat, $lng, $distance, $earthRadius)
                  'max_lng' => $return['east']['lng']);
 }
 
-$distance = 1; // Sitios que se encuentren en un radio de 1KM
-$box = getBoundaries($latRecibida, $lngRecibida, 1, 6371);
+$box = getBoundaries($latRecibida, $lngRecibida, 0.5, 6371);
 
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
