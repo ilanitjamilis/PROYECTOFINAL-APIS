@@ -10,6 +10,13 @@ $misParametros = json_decode($misDatos,true);
 $latRecibida = $misParametros["miLat"];
 $lngRecibida = $misParametros["miLng"];
 
+/*$R = 6371;
+$rad = 2;
+
+$maxLat = $latRecibida + rad2deg($rad/$R);
+$minLat = $latRecibida - rad2deg($rad/$R);
+$maxLon = $lngRecibida + rad2deg(asin($rad/$R) / cos(deg2rad($latRecibida)));
+$minLon = $lngRecibida - rad2deg(asin($rad/$R) / cos(deg2rad($latRecibida)));*/
 
 function getBoundaries($lat, $lng, $distance = 1, $earthRadius = 6371)
 {
@@ -59,10 +66,47 @@ try {
                      AND (longitud BETWEEN " . $box['min_lng']. " AND " . $box['max_lng']. ")
                      HAVING distance  < " . $distance . ";
 
+	/*$query = "SELECT latitud, longitud, tipo, descripcion, fecha
+        FROM misdenuncias 
+        WHERE latitud Between :minLat And :maxLat
+          And longitud Between :minLon And :maxLon";*/
+	
+	/*$query = "SELECT latitud, longitud, tipo, descripcion, fecha, 
+	(
+        6371 *
+        acos(
+            cos( radians( :lat ) ) *
+            cos( radians( `latitud` ) ) *
+            cos(
+                radians( `longitud` ) - radians( :lng )
+            ) +
+            sin(radians(:lat)) *
+            sin(radians(`latitud`))
+        )
+    ) AS distancia
+	FROM misdenuncias 
+	HAVING
+    distancia < 25 ";*/
 	
 	$STH = $DBH->prepare($query);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
-
+	
+	//git add --all && git commit -m "subo"
+	
+	/*$params = array(
+	":lat" => $latRecibida,
+	":lng" =>  $lngRecibida
+	);*/
+	
+	/*$params = array(
+	":minLat" => $minLat,
+	":maxLat" =>  $maxLat, 
+	":minLon" => $minLon,
+	":maxLon" =>  $maxLon
+	);*/
+	
+	
+	//$STH->execute(params);
 	
 	$STH->execute();
 	
