@@ -40,6 +40,6 @@ function getBoundaries($lat, $lng, $distance, $earthRadius)
 $distance = 1; // Sitios que se encuentren en un radio de 1KM
 $box = getBoundaries($latRecibida, $lngRecibida, 1, 6371);
 
-echo $box;
+echo $box['min_lat'];
 
 ?>
