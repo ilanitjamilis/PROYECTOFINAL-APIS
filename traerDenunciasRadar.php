@@ -37,8 +37,8 @@ function getBoundaries($lat, $lng, $distance, $earthRadius)
                  'max_lng' => $return['east']['lng']);
 }
 
-$distance = 0.7;
-$box = getBoundaries($latRecibida, $lngRecibida, 0.7, 6371);
+$distance = 0.8;
+$box = getBoundaries($latRecibida, $lngRecibida, 0.8, 6371);
 
 try {
 	$DBH = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
