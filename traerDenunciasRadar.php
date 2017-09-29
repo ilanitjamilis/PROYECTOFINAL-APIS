@@ -37,6 +37,7 @@ function getBoundaries($lat, $lng, $distance, $earthRadius)
                  'max_lng' => $return['east']['lng']);
 }
 
+$distance = 0.5;
 $box = getBoundaries($latRecibida, $lngRecibida, 0.5, 6371);
 
 try {
