@@ -45,4 +45,21 @@ echo $box['max_lat'];
 echo $box['min_lng'];
 echo $box['max_lng'];
 
+$query = "SELECT latitud, longitud, tipo, descripcion, fecha, 
+	(6371 * ACOS( 
+                                            SIN(RADIANS(latitud)) 
+                                            * SIN(RADIANS(".$latRecibida.")) 
+                                            + COS(RADIANS(longitud - ".$lngRecibida.")) 
+                                            * COS(RADIANS(latitud)) 
+                                            * COS(RADIANS(".$latRecibida."))
+                                            )
+                               ) AS distance
+							   
+        FROM misdenuncias 
+		WHERE (latitud BETWEEN " .$box['min_lat']. " AND " .$box['max_lat']. ")
+                     AND (longitud BETWEEN " .$box['min_lng']. " AND " .$box['max_lng']. ")
+                     HAVING distance  < " .$distance . ";
+					 
+echo $query;
+
 ?>
