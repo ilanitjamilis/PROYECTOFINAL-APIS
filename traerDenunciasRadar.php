@@ -55,9 +55,9 @@ try {
                                ) AS distance
 							   
         FROM misdenuncias 
-		WHERE (latitud BETWEEN ".$box['min_lat']. " AND " . $box['max_lat'] . ")
-                     AND (longitud BETWEEN " . $box['min_lng']. " AND " . $box['max_lng']. ")
-                     HAVING distance  < " . $distance . ";
+		WHERE (latitud BETWEEN " .$box['min_lat']. " AND " .$box['max_lat']. ")
+                     AND (longitud BETWEEN " .$box['min_lng']. " AND " .$box['max_lng']. ")
+                     HAVING distance  < " .$distance. ";
 
 	
 	$STH = $DBH->prepare($query);
