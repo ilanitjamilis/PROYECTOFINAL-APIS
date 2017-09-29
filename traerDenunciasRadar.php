@@ -57,7 +57,7 @@ try {
         FROM misdenuncias 
 		WHERE (latitud BETWEEN " .$box['min_lat']. " AND " .$box['max_lat']. ")
                      AND (longitud BETWEEN " .$box['min_lng']. " AND " .$box['max_lng']. ")
-                     HAVING distance  < " .$distance . "";
+                     HAVING distance  < " .$distance .;
 
 	
 	$STH = $DBH->prepare($query);
