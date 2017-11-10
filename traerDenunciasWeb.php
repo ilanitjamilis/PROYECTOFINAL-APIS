@@ -1,5 +1,5 @@
 <?php
-$servername = "127.0.0.1:51527";
+$servername = "127.0.0.1:51533";
 $username = "azure";
 $password = "6#vWHD_$";
 $dbname = "db";
